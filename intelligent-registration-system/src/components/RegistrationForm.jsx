@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   User, Mail, Phone, MapPin, Lock, Eye, EyeOff, 
-  CheckCircle, XCircle, AlertCircle,
+  CheckCircle, XCircle, AlertCircle, Clock,
   Star, Shield, Zap, Contact, Key, FileText
 } from 'lucide-react';
 import { validators, countries, cities, getPasswordStrength } from '../utils/validators';
@@ -30,8 +30,10 @@ const RegistrationForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitMessage, setSubmitMessage] = useState('');
   const [availableStates, setAvailableStates] = useState([]);
   const [availableCities, setAvailableCities] = useState([]);
+  const [showAllErrors, setShowAllErrors] = useState(false);
 
   // Star field animation
   useEffect(() => {
@@ -79,8 +81,9 @@ const RegistrationForm = () => {
   const validateField = (name, value) => {
     switch (name) {
       case 'firstName':
+        return validators.required(value, 'First Name');
       case 'lastName':
-        return validators.required(value, name.replace(/([A-Z])/g, ' $1'));
+        return validators.required(value, 'Last Name');
       case 'email':
         return validators.email(value);
       case 'phone':
@@ -100,6 +103,15 @@ const RegistrationForm = () => {
     }
   };
 
+  const validateAllFields = () => {
+    const newErrors = {};
+    Object.keys(formData).forEach(key => {
+      const error = validateField(key, formData[key]);
+      if (error) newErrors[key] = error;
+    });
+    return newErrors;
+  };
+
   const handleBlur = (field) => {
     setTouched(prev => ({ ...prev, [field]: true }));
     const error = validateField(field, formData[field]);
@@ -108,61 +120,101 @@ const RegistrationForm = () => {
 
   const handleChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    if (touched[field]) {
+    
+    if (touched[field] || showAllErrors) {
       const error = validateField(field, value);
       setErrors(prev => ({ ...prev, [field]: error }));
     }
   };
 
-  const isFormValid = () => {
-    const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'gender', 'password', 'confirmPassword', 'terms'];
-    const hasErrors = Object.keys(errors).some(key => errors[key]);
-    const allRequiredFilled = requiredFields.every(field => {
-      if (field === 'terms') return formData[field];
-      return formData[field] && formData[field].toString().trim() !== '';
-    });
-    return allRequiredFilled && !hasErrors;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Mark all fields as touched and validate all
     const allTouched = {};
     Object.keys(formData).forEach(key => { allTouched[key] = true; });
     setTouched(allTouched);
+    setShowAllErrors(true);
     
-    const newErrors = {};
-    Object.keys(formData).forEach(key => {
-      const error = validateField(key, formData[key]);
-      if (error) newErrors[key] = error;
-    });
+    const newErrors = validateAllFields();
     setErrors(newErrors);
     
     if (Object.keys(newErrors).length === 0) {
       setIsSubmitting(true);
+      setSubmitStatus('processing');
+      setSubmitMessage('Processing your registration...');
+      
+      // Simulate API call
       setTimeout(() => {
         setIsSubmitting(false);
         setSubmitStatus('success');
+        setSubmitMessage('Registration Successful! Your profile has been submitted successfully.');
+        
+        // Reset form
         setFormData({
           firstName: '', lastName: '', email: '', phone: '', age: '', gender: '',
           address: '', country: '', state: '', city: '', password: '', confirmPassword: '', terms: false
         });
         setTouched({});
-        setTimeout(() => setSubmitStatus(null), 5000);
+        setErrors({});
+        setShowAllErrors(false);
+        
+        // Auto hide success message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus(null);
+          setSubmitMessage('');
+        }, 5000);
       }, 2000);
     } else {
       setSubmitStatus('error');
+      setSubmitMessage(`Please fix ${Object.keys(newErrors).length} error(s) before submitting.`);
+      
+      // Add shake animation to all error fields
+      document.querySelectorAll('.input-error').forEach(field => {
+        field.classList.add('animate-shake');
+        setTimeout(() => field.classList.remove('animate-shake'), 500);
+      });
+
+      // Auto hide error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+        setSubmitMessage('');
+      }, 5000);
     }
   };
 
   const getInputClassName = (field) => {
     const baseClasses = "compact-input";
-    if (errors[field] && touched[field]) {
-      return `${baseClasses} input-error`;
+    const hasError = errors[field] && (touched[field] || showAllErrors);
+    
+    if (hasError) {
+      return `${baseClasses} input-error ${showAllErrors ? 'animate-pulse-red' : ''}`;
     } else if (touched[field] && !errors[field] && formData[field]) {
       return `${baseClasses} input-success`;
     }
+    
     return baseClasses;
   };
+
+  const getFieldStatus = (field) => {
+    if (errors[field] && (touched[field] || showAllErrors)) {
+      return 'error';
+    } else if (touched[field] && !errors[field] && formData[field]) {
+      return 'success';
+    }
+    return 'neutral';
+  };
+
+  // Function to close alerts manually
+  const closeAlert = () => {
+    setSubmitStatus(null);
+    setSubmitMessage('');
+  };
+
+  // Count required fields with errors
+  const errorCount = Object.keys(errors).filter(key => 
+    errors[key] && (touched[key] || showAllErrors)
+  ).length;
 
   return (
     <div className="min-h-screen bg-dark-space py-8 px-4 relative overflow-hidden">
@@ -176,34 +228,99 @@ const RegistrationForm = () => {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-neon-blue to-neon-purple rounded-3xl mb-4 shadow-2xl neon-glow">
             <Shield className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-4xl font-black bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent mb-2 header-text">
+          <h1 className="text-4xl font-black bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent mb-2">
             QUANTUM REGISTER
           </h1>
-          <p className="text-lg text-gray-300 subheader-text">
+          <p className="text-lg text-gray-300">
             Create your account and unlock exclusive features
           </p>
         </div>
 
-        {/* Success/Error Messages */}
-        {submitStatus === 'success' && (
-          <div className="mb-6 p-4 alert-success neon-glow rounded-2xl">
-            <div className="flex items-center space-x-3">
-              <CheckCircle className="w-6 h-6 text-white" />
-              <div>
-                <h3 className="font-bold text-white">Quantum Profile Activated!</h3>
-                <p className="text-sm opacity-90 text-white">Welcome to the future!</p>
-              </div>
+        {/* Error Counter Badge */}
+        {errorCount > 0 && (
+          <div className="mb-6 p-4 error-counter animate-pulse">
+            <div className="flex items-center justify-center space-x-3">
+              <AlertCircle className="w-6 h-6 text-neon-pink" />
+              <span className="text-white font-semibold">
+                {errorCount} field{errorCount !== 1 ? 's' : ''} require{errorCount !== 1 ? '' : 's'} attention
+              </span>
+              <div className="w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
             </div>
           </div>
         )}
 
+        {/* ALERT SYSTEM */}
+        {/* Success Alert */}
+        {submitStatus === 'success' && (
+          <div className="mb-6 p-6 rounded-2xl success-alert animate-slideIn">
+            <div className="flex items-start justify-between">
+              <div className="flex items-start space-x-4 flex-1">
+                <div className="flex-shrink-0">
+                  <CheckCircle className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-white mb-2">🎉 Registration Successful!</h3>
+                  <p className="text-white opacity-90 text-lg">{submitMessage}</p>
+                  <div className="mt-3 flex items-center space-x-2 text-green-200">
+                    <Clock className="w-4 h-4" />
+                    <span className="text-sm">You will be redirected shortly...</span>
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={closeAlert}
+                className="flex-shrink-0 text-white hover:text-green-200 transition-colors p-1 rounded-full hover:bg-white/10"
+              >
+                <XCircle className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Error Alert */}
         {submitStatus === 'error' && (
-          <div className="mb-6 p-4 alert-error neon-pink-glow rounded-2xl">
-            <div className="flex items-center space-x-3">
-              <XCircle className="w-6 h-6 text-white" />
-              <div>
-                <h3 className="font-bold text-white">Quantum Errors Detected</h3>
-                <p className="text-sm opacity-90 text-white">Please check the highlighted fields</p>
+          <div className="mb-6 p-6 rounded-2xl error-alert animate-slideIn">
+            <div className="flex items-start justify-between">
+              <div className="flex items-start space-x-4 flex-1">
+                <div className="flex-shrink-0">
+                  <XCircle className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-white mb-2">❌ Registration Failed</h3>
+                  <p className="text-white opacity-90 text-lg">{submitMessage}</p>
+                  <div className="mt-3">
+                    <p className="text-red-200 text-sm font-semibold mb-2">Please fix the following issues:</p>
+                    <ul className="text-red-200 text-sm list-disc list-inside space-y-1">
+                      {Object.keys(errors).map(key => errors[key] && (
+                        <li key={key}>{errors[key]}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={closeAlert}
+                className="flex-shrink-0 text-white hover:text-red-200 transition-colors p-1 rounded-full hover:bg-white/10"
+              >
+                <XCircle className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Processing Alert */}
+        {submitStatus === 'processing' && (
+          <div className="mb-6 p-6 rounded-2xl processing-alert animate-pulse">
+            <div className="flex items-center space-x-4">
+              <div className="flex-shrink-0">
+                <Clock className="w-8 h-8 text-white animate-spin" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-white mb-1">⏳ Processing Registration</h3>
+                <p className="text-white opacity-90">{submitMessage}</p>
+                <div className="mt-3 w-full bg-white/20 rounded-full h-2">
+                  <div className="bg-neon-blue h-2 rounded-full animate-progress"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -226,9 +343,12 @@ const RegistrationForm = () => {
 
                 <div className="personal-info-grid">
                   {/* First Name */}
-                  <div className="compact-input-group">
+                  <div className="compact-input-group relative">
                     <label className="compact-label">
                       <span>FIRST NAME *</span>
+                      {getFieldStatus('firstName') === 'error' && (
+                        <div className="ml-2 w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                      )}
                     </label>
                     <input
                       type="text"
@@ -238,18 +358,21 @@ const RegistrationForm = () => {
                       className={getInputClassName('firstName')}
                       placeholder="Enter your first name"
                     />
-                    {errors.firstName && touched.firstName && (
+                    {errors.firstName && (touched.firstName || showAllErrors) && (
                       <div className="error-text mt-2">
-                        <AlertCircle className="w-3 h-3 text-neon-pink" />
-                        <span className="text-xs text-neon-pink">{errors.firstName}</span>
+                        <AlertCircle className="w-4 h-4 text-neon-pink" />
+                        <span className="text-sm text-neon-pink">{errors.firstName}</span>
                       </div>
                     )}
                   </div>
 
                   {/* Last Name */}
-                  <div className="compact-input-group">
+                  <div className="compact-input-group relative">
                     <label className="compact-label">
                       <span>LAST NAME *</span>
+                      {getFieldStatus('lastName') === 'error' && (
+                        <div className="ml-2 w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                      )}
                     </label>
                     <input
                       type="text"
@@ -259,10 +382,10 @@ const RegistrationForm = () => {
                       className={getInputClassName('lastName')}
                       placeholder="Enter your last name"
                     />
-                    {errors.lastName && touched.lastName && (
+                    {errors.lastName && (touched.lastName || showAllErrors) && (
                       <div className="error-text mt-2">
-                        <AlertCircle className="w-3 h-3 text-neon-pink" />
-                        <span className="text-xs text-neon-pink">{errors.lastName}</span>
+                        <AlertCircle className="w-4 h-4 text-neon-pink" />
+                        <span className="text-sm text-neon-pink">{errors.lastName}</span>
                       </div>
                     )}
                   </div>
@@ -282,10 +405,10 @@ const RegistrationForm = () => {
                       min="1"
                       max="120"
                     />
-                    {errors.age && touched.age && (
+                    {errors.age && (touched.age || showAllErrors) && (
                       <div className="error-text mt-2">
-                        <AlertCircle className="w-3 h-3 text-neon-pink" />
-                        <span className="text-xs text-neon-pink">{errors.age}</span>
+                        <AlertCircle className="w-4 h-4 text-neon-pink" />
+                        <span className="text-sm text-neon-pink">{errors.age}</span>
                       </div>
                     )}
                   </div>
@@ -294,12 +417,17 @@ const RegistrationForm = () => {
                   <div className="compact-input-group">
                     <label className="compact-label">
                       <span>GENDER *</span>
+                      {getFieldStatus('gender') === 'error' && (
+                        <div className="ml-2 w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                      )}
                     </label>
                     <div className="cyber-radio-group">
                       {['Male', 'Female', 'Other'].map((option) => (
                         <label 
                           key={option} 
-                          className={`cyber-radio-label ${formData.gender === option ? 'selected' : ''}`}
+                          className={`cyber-radio-label ${formData.gender === option ? 'selected' : ''} ${
+                            getFieldStatus('gender') === 'error' ? 'border-neon-pink animate-pulse-red' : ''
+                          }`}
                         >
                           <input
                             type="radio"
@@ -313,10 +441,10 @@ const RegistrationForm = () => {
                         </label>
                       ))}
                     </div>
-                    {errors.gender && touched.gender && (
+                    {errors.gender && (touched.gender || showAllErrors) && (
                       <div className="error-text mt-2">
-                        <AlertCircle className="w-3 h-3 text-neon-pink" />
-                        <span className="text-xs text-neon-pink">{errors.gender}</span>
+                        <AlertCircle className="w-4 h-4 text-neon-pink" />
+                        <span className="text-sm text-neon-pink">{errors.gender}</span>
                       </div>
                     )}
                   </div>
@@ -336,10 +464,10 @@ const RegistrationForm = () => {
                     placeholder="Enter your full address"
                     rows="2"
                   />
-                  {errors.address && touched.address && (
+                  {errors.address && (touched.address || showAllErrors) && (
                     <div className="error-text mt-2">
-                      <AlertCircle className="w-3 h-3 text-neon-pink" />
-                      <span className="text-xs text-neon-pink">{errors.address}</span>
+                      <AlertCircle className="w-4 h-4 text-neon-pink" />
+                      <span className="text-sm text-neon-pink">{errors.address}</span>
                     </div>
                   )}
                 </div>
@@ -357,10 +485,13 @@ const RegistrationForm = () => {
 
                 {/* Contact Information */}
                 <div className="contact-section">
-                  <div className="compact-input-group">
+                  <div className="compact-input-group relative">
                     <label className="compact-label">
                       <Mail className="w-4 h-4 text-neon-blue" />
                       <span>EMAIL ADDRESS *</span>
+                      {getFieldStatus('email') === 'error' && (
+                        <div className="ml-2 w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                      )}
                     </label>
                     <input
                       type="email"
@@ -370,18 +501,21 @@ const RegistrationForm = () => {
                       className={getInputClassName('email')}
                       placeholder="your@email.com"
                     />
-                    {errors.email && touched.email && (
+                    {errors.email && (touched.email || showAllErrors) && (
                       <div className="error-text mt-2">
-                        <AlertCircle className="w-3 h-3 text-neon-pink" />
-                        <span className="text-xs text-neon-pink">{errors.email}</span>
+                        <AlertCircle className="w-4 h-4 text-neon-pink" />
+                        <span className="text-sm text-neon-pink">{errors.email}</span>
                       </div>
                     )}
                   </div>
 
-                  <div className="compact-input-group">
+                  <div className="compact-input-group relative">
                     <label className="compact-label">
                       <Phone className="w-4 h-4 text-neon-blue" />
                       <span>PHONE NUMBER *</span>
+                      {getFieldStatus('phone') === 'error' && (
+                        <div className="ml-2 w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                      )}
                     </label>
                     <input
                       type="tel"
@@ -391,10 +525,10 @@ const RegistrationForm = () => {
                       className={getInputClassName('phone')}
                       placeholder="+1234567890"
                     />
-                    {errors.phone && touched.phone && (
+                    {errors.phone && (touched.phone || showAllErrors) && (
                       <div className="error-text mt-2">
-                        <AlertCircle className="w-3 h-3 text-neon-pink" />
-                        <span className="text-xs text-neon-pink">{errors.phone}</span>
+                        <AlertCircle className="w-4 h-4 text-neon-pink" />
+                        <span className="text-sm text-neon-pink">{errors.phone}</span>
                       </div>
                     )}
                   </div>
@@ -409,11 +543,11 @@ const RegistrationForm = () => {
                     <select
                       value={formData.country}
                       onChange={(e) => handleChange('country', e.target.value)}
-                      className="compact-input text-sm"
+                      className={getInputClassName('country')}
                     >
-                      <option value="" className="text-gray-700">Country</option>
+                      <option value="">Country</option>
                       {countries.map(country => (
-                        <option key={country.code} value={country.name} className="text-gray-700">
+                        <option key={country.code} value={country.name}>
                           {country.name}
                         </option>
                       ))}
@@ -421,12 +555,12 @@ const RegistrationForm = () => {
                     <select
                       value={formData.state}
                       onChange={(e) => handleChange('state', e.target.value)}
-                      className="compact-input text-sm"
+                      className={getInputClassName('state')}
                       disabled={!availableStates.length}
                     >
-                      <option value="" className="text-gray-700">State</option>
+                      <option value="">State</option>
                       {availableStates.map(state => (
-                        <option key={state} value={state} className="text-gray-700">
+                        <option key={state} value={state}>
                           {state}
                         </option>
                       ))}
@@ -434,12 +568,12 @@ const RegistrationForm = () => {
                     <select
                       value={formData.city}
                       onChange={(e) => handleChange('city', e.target.value)}
-                      className="compact-input text-sm"
+                      className={getInputClassName('city')}
                       disabled={!availableCities.length}
                     >
-                      <option value="" className="text-gray-700">City</option>
+                      <option value="">City</option>
                       {availableCities.map(city => (
-                        <option key={city} value={city} className="text-gray-700">
+                        <option key={city} value={city}>
                           {city}
                         </option>
                       ))}
@@ -449,10 +583,13 @@ const RegistrationForm = () => {
 
                 {/* Password Section */}
                 <div className="password-section">
-                  <div className="compact-input-group">
+                  <div className="compact-input-group relative">
                     <label className="compact-label">
                       <Key className="w-4 h-4 text-neon-blue" />
                       <span>PASSWORD *</span>
+                      {getFieldStatus('password') === 'error' && (
+                        <div className="ml-2 w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                      )}
                     </label>
                     <div className="relative">
                       <input
@@ -472,18 +609,21 @@ const RegistrationForm = () => {
                       </button>
                     </div>
                     {formData.password && <PasswordStrengthMeter password={formData.password} />}
-                    {errors.password && touched.password && (
+                    {errors.password && (touched.password || showAllErrors) && (
                       <div className="error-text mt-2">
-                        <AlertCircle className="w-3 h-3 text-neon-pink" />
-                        <span className="text-xs text-neon-pink">{errors.password}</span>
+                        <AlertCircle className="w-4 h-4 text-neon-pink" />
+                        <span className="text-sm text-neon-pink">{errors.password}</span>
                       </div>
                     )}
                   </div>
 
-                  <div className="compact-input-group">
+                  <div className="compact-input-group relative">
                     <label className="compact-label">
                       <Key className="w-4 h-4 text-neon-blue" />
                       <span>CONFIRM PASSWORD *</span>
+                      {getFieldStatus('confirmPassword') === 'error' && (
+                        <div className="ml-2 w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                      )}
                     </label>
                     <div className="relative">
                       <input
@@ -502,10 +642,10 @@ const RegistrationForm = () => {
                         {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
-                    {errors.confirmPassword && touched.confirmPassword && (
+                    {errors.confirmPassword && (touched.confirmPassword || showAllErrors) && (
                       <div className="error-text mt-2">
-                        <AlertCircle className="w-3 h-3 text-neon-pink" />
-                        <span className="text-xs text-neon-pink">{errors.confirmPassword}</span>
+                        <AlertCircle className="w-4 h-4 text-neon-pink" />
+                        <span className="text-sm text-neon-pink">{errors.confirmPassword}</span>
                       </div>
                     )}
                   </div>
@@ -519,43 +659,52 @@ const RegistrationForm = () => {
                       checked={formData.terms}
                       onChange={(e) => handleChange('terms', e.target.checked)}
                       onBlur={() => handleBlur('terms')}
-                      className="enhanced-checkbox mt-1"
+                      className={`enhanced-checkbox mt-1 ${
+                        getFieldStatus('terms') === 'error' ? 'animate-pulse-red' : ''
+                      }`}
                     />
                     <div className="flex-1">
-                      <span className="text-sm font-semibold text-white header-text">
+                      <span className="text-sm font-semibold text-white">
                         I agree to the Quantum Terms & Conditions
                       </span>
-                      <p className="text-xs text-gray-400 mt-1 subheader-text">
+                      <p className="text-xs text-gray-400 mt-1">
                         By creating an account, you agree to our quantum protocols
                       </p>
                     </div>
+                    {getFieldStatus('terms') === 'error' && (
+                      <div className="ml-2 w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                    )}
                   </label>
-                  {errors.terms && touched.terms && (
+                  {errors.terms && (touched.terms || showAllErrors) && (
                     <div className="error-text mt-2">
-                      <AlertCircle className="w-3 h-3 text-neon-pink" />
-                      <span className="text-xs text-neon-pink">{errors.terms}</span>
+                      <AlertCircle className="w-4 h-4 text-neon-pink" />
+                      <span className="text-sm text-neon-pink">{errors.terms}</span>
                     </div>
                   )}
                 </div>
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit Button - ALWAYS ENABLED */}
             <div className="submit-section">
               <button
                 type="submit"
-                disabled={!isFormValid() || isSubmitting}
-                className="quantum-button"
+                className={`quantum-button ${errorCount > 0 ? 'has-errors' : ''}`}
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center space-x-3">
                     <div className="quantum-spinner" />
-                    <span className="text-white">ACTIVATING QUANTUM PROFILE...</span>
+                    <span className="text-white">PROCESSING REGISTRATION...</span>
                   </div>
                 ) : (
                   <div className="flex items-center justify-center space-x-3">
                     <Shield className="w-5 h-5 text-white" />
-                    <span className="text-white">CREATE QUANTUM ACCOUNT</span>
+                    <span className="text-white">
+                      {errorCount > 0 ? `SUBMIT WITH ${errorCount} ERROR${errorCount !== 1 ? 'S' : ''}` : 'CREATE QUANTUM ACCOUNT'}
+                    </span>
+                    {errorCount > 0 && (
+                      <div className="w-3 h-3 bg-neon-pink rounded-full animate-ping"></div>
+                    )}
                   </div>
                 )}
               </button>
@@ -563,7 +712,7 @@ const RegistrationForm = () => {
               <div className="text-center mt-4">
                 <p className="text-sm text-gray-400">
                   Already have a quantum profile?{' '}
-                  <a href="#" className="form-link font-semibold">
+                  <a href="#" className="text-neon-blue hover:text-neon-purple font-semibold transition-colors">
                     ACCESS QUANTUM PORTAL
                   </a>
                 </p>

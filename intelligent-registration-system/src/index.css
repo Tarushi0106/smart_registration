@@ -977,3 +977,240 @@ textarea.compact-input {
   color: var(--text-muted) !important;
   opacity: 0.7;
 }
+/* ALERT SYSTEM STYLES */
+.success-alert {
+  background: linear-gradient(135deg, 
+    rgba(72, 187, 120, 0.9), 
+    rgba(56, 161, 105, 0.9)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 10px 25px rgba(72, 187, 120, 0.3),
+    0 5px 10px rgba(72, 187, 120, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.error-alert {
+  background: linear-gradient(135deg, 
+    rgba(245, 101, 101, 0.9), 
+    rgba(229, 62, 62, 0.9)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 10px 25px rgba(245, 101, 101, 0.3),
+    0 5px 10px rgba(245, 101, 101, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.processing-alert {
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.9), 
+    rgba(37, 99, 235, 0.9)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 10px 25px rgba(59, 130, 246, 0.3),
+    0 5px 10px rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+/* Alert Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out;
+}
+
+.animate-progress {
+  animation: progress 2s ease-in-out infinite;
+}
+
+/* Enhanced Error States */
+.input-error {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 
+    0 0 15px rgba(255, 42, 109, 0.4),
+    inset 0 0 10px rgba(255, 42, 109, 0.1) !important;
+}
+
+.input-success {
+  border-color: var(--neon-blue) !important;
+  box-shadow: 
+    0 0 15px rgba(0, 243, 255, 0.4),
+    inset 0 0 10px rgba(0, 243, 255, 0.1) !important;
+}
+
+.error-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--neon-pink) !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Eye toggle button */
+.eye-toggle-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--neon-blue) !important;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.eye-toggle-btn:hover {
+  background: rgba(0, 243, 255, 0.1);
+  color: var(--neon-purple) !important;
+}
+
+/* Quantum spinner */
+.quantum-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--neon-blue);
+  border-right: 2px solid var(--neon-purple);
+  border-bottom: 2px solid var(--neon-pink);
+  border-radius: 50%;
+  animation: quantumSpin 1s linear infinite;
+}
+
+@keyframes quantumSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ERROR SIGNAL STYLES */
+.error-counter {
+  background: linear-gradient(135deg, 
+    rgba(255, 42, 109, 0.2), 
+    rgba(185, 103, 255, 0.2)
+  );
+  border: 1px solid rgba(255, 42, 109, 0.5);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
+}
+
+/* Pulsing red animation for error fields */
+.animate-pulse-red {
+  animation: pulseRed 2s infinite;
+}
+
+@keyframes pulseRed {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 42, 109, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 42, 109, 0);
+  }
+}
+
+/* Shake animation for error fields */
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* Enhanced error states with stronger signals */
+.input-error {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 
+    0 0 20px rgba(255, 42, 109, 0.5),
+    inset 0 0 15px rgba(255, 42, 109, 0.2) !important;
+  background: rgba(255, 42, 109, 0.05) !important;
+}
+
+/* Button with errors state */
+.quantum-button.has-errors {
+  background: linear-gradient(135deg, 
+    rgba(255, 42, 109, 0.8), 
+    rgba(185, 103, 255, 0.8),
+    rgba(0, 243, 255, 0.8)
+  );
+  box-shadow: 
+    0 10px 30px rgba(255, 42, 109, 0.4),
+    0 5px 15px rgba(185, 103, 255, 0.4);
+}
+
+.quantum-button.has-errors:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 42, 109, 0.9), 
+    rgba(185, 103, 255, 0.9),
+    rgba(0, 243, 255, 0.9)
+  );
+  box-shadow: 
+    0 15px 40px rgba(255, 42, 109, 0.6),
+    0 10px 25px rgba(185, 103, 255, 0.6);
+}
+
+/* Ping animation for error indicators */
+.animate-ping {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Enhanced error text with glow */
+.error-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--neon-pink) !important;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Radio button error state */
+.cyber-radio-label.border-neon-pink {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 0 0 15px rgba(255, 42, 109, 0.4) !important;
+}
+
+/* Checkbox error state */
+.enhanced-checkbox.animate-pulse-red {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 0 0 10px rgba(255, 42, 109, 0.5) !important;
+}
