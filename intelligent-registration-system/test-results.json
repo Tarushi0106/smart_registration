@@ -1,0 +1,652 @@
+{
+  "config": {
+    "configFile": "E:\\smart_registration\\intelligent-registration-system\\playwright.config.js",
+    "rootDir": "E:/smart_registration/intelligent-registration-system/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 6
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ],
+      [
+        "line",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/smart_registration/intelligent-registration-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "E:/smart_registration/intelligent-registration-system/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "E:/smart_registration/intelligent-registration-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "E:/smart_registration/intelligent-registration-system/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "E:/smart_registration/intelligent-registration-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "E:/smart_registration/intelligent-registration-system/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "E:/smart_registration/intelligent-registration-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "E:/smart_registration/intelligent-registration-system/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "E:/smart_registration/intelligent-registration-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "E:/smart_registration/intelligent-registration-system/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "E:/smart_registration/intelligent-registration-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "Microsoft Edge",
+        "name": "Microsoft Edge",
+        "testDir": "E:/smart_registration/intelligent-registration-system/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "E:/smart_registration/intelligent-registration-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "Google Chrome",
+        "name": "Google Chrome",
+        "testDir": "E:/smart_registration/intelligent-registration-system/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 6,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:5173",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "flow-a-negative.spec.js",
+      "file": "flow-a-negative.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flow A - Negative Scenario: Detect Missing Required Fields",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 31087,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                        "column": 14,
+                        "line": 41
+                      },
+                      "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"CREATE QUANTUM ACCOUNT\")')\u001b[22m\n\n\n\u001b[0m \u001b[90m 39 |\u001b[39m   \n \u001b[90m 40 |\u001b[39m   \u001b[90m// Step 4: Click Submit\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"CREATE QUANTUM ACCOUNT\")'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 42 |\u001b[39m   \n \u001b[90m 43 |\u001b[39m   \u001b[90m// Step 5: Validate - Check for PASSWORD error (since we left it blank)\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mconst\u001b[39m passwordError \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Password must be at least, text=Password is required, text=password'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js:41:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "📄 Page URL: http://localhost:5173/\n"
+                    },
+                    {
+                      "text": "🏷️ Page Title: Intelligent Registration System\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T05:01:41.149Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-chromium\\video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3d9ebf1a18af39b39124-98623fd46e28c28f910f",
+          "file": "flow-a-negative.spec.js",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Flow A - Negative Scenario: Detect Missing Required Fields",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "timedOut",
+                  "duration": 30101,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"page\".\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"page\".\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded while setting up \"page\".\u001b[39m"
+                    },
+                    {
+                      "message": "Error: browserContext.newPage: Test timeout of 30000ms exceeded."
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T05:01:41.168Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3d9ebf1a18af39b39124-63eaa3c3377837c90718",
+          "file": "flow-a-negative.spec.js",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Flow A - Negative Scenario: Detect Missing Required Fields",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "timedOut",
+                  "duration": 36668,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                        "column": 14,
+                        "line": 20
+                      },
+                      "message": "Error: page.fill: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[placeholder=\"your@email.com\"]')\u001b[22m\n\n\n\u001b[0m \u001b[90m 18 |\u001b[39m   \n \u001b[90m 19 |\u001b[39m   \u001b[90m// ○ Email → valid\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[placeholder=\"your@email.com\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'john.doe@example.com'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 21 |\u001b[39m   \n \u001b[90m 22 |\u001b[39m   \u001b[90m// ○ Phone Number → valid\u001b[39m\n \u001b[90m 23 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[placeholder=\"+1234567890\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'+1234567890'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js:20:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "📄 Page URL: http://localhost:5173/\n"
+                    },
+                    {
+                      "text": "🏷️ Page Title: Intelligent Registration System\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T05:01:41.167Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-webkit\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-webkit\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3d9ebf1a18af39b39124-b8f7e15c359063b8f0c5",
+          "file": "flow-a-negative.spec.js",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Flow A - Negative Scenario: Detect Missing Required Fields",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Mobile Chrome",
+              "projectName": "Mobile Chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "failed",
+                  "duration": 24455,
+                  "error": {
+                    "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"CREATE QUANTUM ACCOUNT\")')\u001b[22m\n",
+                    "stack": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"CREATE QUANTUM ACCOUNT\")')\u001b[22m\n\n    at E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js:41:14",
+                    "location": {
+                      "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                      "column": 14,
+                      "line": 41
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 39 |\u001b[39m   \n \u001b[90m 40 |\u001b[39m   \u001b[90m// Step 4: Click Submit\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"CREATE QUANTUM ACCOUNT\")'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 42 |\u001b[39m   \n \u001b[90m 43 |\u001b[39m   \u001b[90m// Step 5: Validate - Check for PASSWORD error (since we left it blank)\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mconst\u001b[39m passwordError \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Password must be at least, text=Password is required, text=password'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                        "column": 14,
+                        "line": 41
+                      },
+                      "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"CREATE QUANTUM ACCOUNT\")')\u001b[22m\n\n\n\u001b[0m \u001b[90m 39 |\u001b[39m   \n \u001b[90m 40 |\u001b[39m   \u001b[90m// Step 4: Click Submit\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"CREATE QUANTUM ACCOUNT\")'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 42 |\u001b[39m   \n \u001b[90m 43 |\u001b[39m   \u001b[90m// Step 5: Validate - Check for PASSWORD error (since we left it blank)\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mconst\u001b[39m passwordError \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Password must be at least, text=Password is required, text=password'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js:41:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "📄 Page URL: http://localhost:5173/\n"
+                    },
+                    {
+                      "text": "🏷️ Page Title: Intelligent Registration System\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T05:01:41.168Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-Mobile-Chrome\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                    "column": 14,
+                    "line": 41
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3d9ebf1a18af39b39124-b916fe392ddf862e094e",
+          "file": "flow-a-negative.spec.js",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Flow A - Negative Scenario: Detect Missing Required Fields",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Mobile Safari",
+              "projectName": "Mobile Safari",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 4,
+                  "status": "timedOut",
+                  "duration": 35488,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                        "column": 14,
+                        "line": 17
+                      },
+                      "message": "Error: page.fill: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[placeholder=\"Enter your last name\"]')\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"\" type=\"text\" class=\"compact-input\" placeholder=\"Enter your last name\"/>\u001b[22m\n\u001b[2m    - fill(\"Doe\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n\u001b[0m \u001b[90m 15 |\u001b[39m   \n \u001b[90m 16 |\u001b[39m   \u001b[90m// ○ Last Name → filled\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[placeholder=\"Enter your last name\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'Doe'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m   \n \u001b[90m 19 |\u001b[39m   \u001b[90m// ○ Email → valid\u001b[39m\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[placeholder=\"your@email.com\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'john.doe@example.com'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js:17:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "📄 Page URL: http://localhost:5173/\n"
+                    },
+                    {
+                      "text": "🏷️ Page Title: Intelligent Registration System\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T05:01:41.168Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-Mobile-Safari\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-Mobile-Safari\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-Mobile-Safari\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3d9ebf1a18af39b39124-c85587e3a2d43bf98af5",
+          "file": "flow-a-negative.spec.js",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Flow A - Negative Scenario: Detect Missing Required Fields",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Microsoft Edge",
+              "projectName": "Microsoft Edge",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 5,
+                  "status": "timedOut",
+                  "duration": 31596,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                        "column": 14,
+                        "line": 41
+                      },
+                      "message": "Error: page.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"CREATE QUANTUM ACCOUNT\")')\u001b[22m\n\n\n\u001b[0m \u001b[90m 39 |\u001b[39m   \n \u001b[90m 40 |\u001b[39m   \u001b[90m// Step 4: Click Submit\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"CREATE QUANTUM ACCOUNT\")'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 42 |\u001b[39m   \n \u001b[90m 43 |\u001b[39m   \u001b[90m// Step 5: Validate - Check for PASSWORD error (since we left it blank)\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mconst\u001b[39m passwordError \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Password must be at least, text=Password is required, text=password'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js:41:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "📄 Page URL: http://localhost:5173/\n"
+                    },
+                    {
+                      "text": "🏷️ Page Title: Intelligent Registration System\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T05:01:41.147Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-Microsoft-Edge\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-Microsoft-Edge\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-Microsoft-Edge\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3d9ebf1a18af39b39124-42bafdbdd655c1b017cf",
+          "file": "flow-a-negative.spec.js",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Flow A - Negative Scenario: Detect Missing Required Fields",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome",
+              "projectName": "Google Chrome",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 4,
+                  "status": "failed",
+                  "duration": 4529,
+                  "error": {
+                    "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"CREATE QUANTUM ACCOUNT\")')\u001b[22m\n",
+                    "stack": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"CREATE QUANTUM ACCOUNT\")')\u001b[22m\n\n    at E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js:41:14",
+                    "location": {
+                      "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                      "column": 14,
+                      "line": 41
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 39 |\u001b[39m   \n \u001b[90m 40 |\u001b[39m   \u001b[90m// Step 4: Click Submit\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"CREATE QUANTUM ACCOUNT\")'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 42 |\u001b[39m   \n \u001b[90m 43 |\u001b[39m   \u001b[90m// Step 5: Validate - Check for PASSWORD error (since we left it blank)\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mconst\u001b[39m passwordError \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Password must be at least, text=Password is required, text=password'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                        "column": 14,
+                        "line": 41
+                      },
+                      "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"CREATE QUANTUM ACCOUNT\")')\u001b[22m\n\n\n\u001b[0m \u001b[90m 39 |\u001b[39m   \n \u001b[90m 40 |\u001b[39m   \u001b[90m// Step 4: Click Submit\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"CREATE QUANTUM ACCOUNT\")'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 42 |\u001b[39m   \n \u001b[90m 43 |\u001b[39m   \u001b[90m// Step 5: Validate - Check for PASSWORD error (since we left it blank)\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mconst\u001b[39m passwordError \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Password must be at least, text=Password is required, text=password'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js:41:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "📄 Page URL: http://localhost:5173/\n"
+                    },
+                    {
+                      "text": "🏷️ Page Title: Intelligent Registration System\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T05:02:18.515Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\smart_registration\\intelligent-registration-system\\test-results\\flow-a-negative-Flow-A---N-fb84b-ect-Missing-Required-Fields-Google-Chrome\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\smart_registration\\intelligent-registration-system\\tests\\flow-a-negative.spec.js",
+                    "column": 14,
+                    "line": 41
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3d9ebf1a18af39b39124-1be3d88350bb07efd643",
+          "file": "flow-a-negative.spec.js",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-12T05:01:36.449Z",
+    "duration": 47925.935,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,149 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - img [ref=e8]
+    - heading "QUANTUM REGISTER" [level=1] [ref=e10]
+    - paragraph [ref=e11]: Create your account and unlock exclusive features
+  - generic [ref=e13]:
+    - img [ref=e14]
+    - generic [ref=e16]: 7 fields require attention
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - img [ref=e21]
+      - generic [ref=e25]:
+        - heading "❌ Registration Failed" [level=3] [ref=e26]
+        - paragraph [ref=e27]: Please fix 7 error(s) before submitting.
+        - generic [ref=e28]:
+          - paragraph [ref=e29]: "Please fix the following issues:"
+          - list [ref=e30]:
+            - listitem [ref=e31]: First Name is required
+            - listitem [ref=e32]: Last Name is required
+            - listitem [ref=e33]: Please enter a valid email address
+            - listitem [ref=e34]: Phone number is required
+            - listitem [ref=e35]: Gender is required
+            - listitem [ref=e36]: Password must be at least 8 characters long
+            - listitem [ref=e37]: You must accept the terms and conditions
+    - button [ref=e38]:
+      - img [ref=e39]
+  - generic [ref=e44]:
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - img [ref=e49]
+            - heading "Personal Information" [level=2] [ref=e52]
+          - paragraph [ref=e53]: Enter your basic personal details
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e57]: FIRST NAME *
+            - textbox "Enter your first name" [ref=e58]
+            - generic [ref=e59]:
+              - img [ref=e60]
+              - generic [ref=e62]: First Name is required
+          - generic [ref=e63]:
+            - generic [ref=e65]: LAST NAME *
+            - textbox "Enter your last name" [ref=e66]
+            - generic [ref=e67]:
+              - img [ref=e68]
+              - generic [ref=e70]: Last Name is required
+          - generic [ref=e71]:
+            - generic [ref=e73]: AGE
+            - spinbutton [ref=e74]
+          - generic [ref=e75]:
+            - generic [ref=e77]: GENDER *
+            - generic [ref=e78]:
+              - generic [ref=e79] [cursor=pointer]:
+                - radio "Male" [ref=e80]
+                - generic [ref=e81]: Male
+              - generic [ref=e82] [cursor=pointer]:
+                - radio "Female" [ref=e83]
+                - generic [ref=e84]: Female
+              - generic [ref=e85] [cursor=pointer]:
+                - radio "Other" [ref=e86]
+                - generic [ref=e87]: Other
+            - generic [ref=e88]:
+              - img [ref=e89]
+              - generic [ref=e91]: Gender is required
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - img [ref=e94]
+            - generic [ref=e97]: ADDRESS
+          - textbox "Enter your full address" [ref=e98]
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - generic [ref=e101]:
+            - img [ref=e102]
+            - heading "Contact & Security" [level=2] [ref=e106]
+          - paragraph [ref=e107]: Your contact details and account security
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - img [ref=e111]
+              - generic [ref=e114]: EMAIL ADDRESS *
+            - textbox "your@email.com" [ref=e115]
+            - generic [ref=e116]:
+              - img [ref=e117]
+              - generic [ref=e119]: Please enter a valid email address
+          - generic [ref=e120]:
+            - generic [ref=e121]:
+              - img [ref=e122]
+              - generic [ref=e124]: PHONE NUMBER *
+            - textbox "+1234567890" [ref=e125]
+            - generic [ref=e126]:
+              - img [ref=e127]
+              - generic [ref=e129]: Phone number is required
+        - generic [ref=e130]:
+          - generic [ref=e132]: LOCATION
+          - generic [ref=e133]:
+            - combobox [ref=e134]:
+              - option "Country" [selected]
+              - option "United States"
+              - option "United Kingdom"
+              - option "India"
+              - option "Canada"
+              - option "Australia"
+            - combobox [disabled] [ref=e135]:
+              - option "State" [selected]
+            - combobox [disabled] [ref=e136]:
+              - option "City" [selected]
+        - generic [ref=e137]:
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - img [ref=e140]
+              - generic [ref=e144]: PASSWORD *
+            - generic [ref=e145]:
+              - textbox "Create quantum password" [ref=e146]
+              - button [ref=e147] [cursor=pointer]:
+                - img [ref=e148]
+            - generic [ref=e151]:
+              - img [ref=e152]
+              - generic [ref=e154]: Password must be at least 8 characters long
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - img [ref=e157]
+              - generic [ref=e161]: CONFIRM PASSWORD *
+            - generic [ref=e162]:
+              - textbox "Confirm quantum password" [ref=e163]
+              - button [ref=e164] [cursor=pointer]:
+                - img [ref=e165]
+        - generic [ref=e168]:
+          - generic [ref=e169] [cursor=pointer]:
+            - checkbox "I agree to the Quantum Terms & Conditions By creating an account, you agree to our quantum protocols" [ref=e170]
+            - generic [ref=e171]:
+              - text: I agree to the Quantum Terms & Conditions
+              - paragraph [ref=e172]: By creating an account, you agree to our quantum protocols
+          - generic [ref=e173]:
+            - img [ref=e174]
+            - generic [ref=e176]: You must accept the terms and conditions
+    - generic [ref=e177]:
+      - button "SUBMIT WITH 7 ERRORS" [active] [ref=e178] [cursor=pointer]:
+        - generic [ref=e179]:
+          - img [ref=e180]
+          - generic [ref=e182]: SUBMIT WITH 7 ERRORS
+      - paragraph [ref=e184]:
+        - text: Already have a quantum profile?
+        - link "ACCESS QUANTUM PORTAL" [ref=e185] [cursor=pointer]:
+          - /url: "#"
+```

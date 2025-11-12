@@ -1,0 +1,117 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - img [ref=e8]
+    - heading "QUANTUM REGISTER" [level=1] [ref=e10]
+    - paragraph [ref=e11]: Create your account and unlock exclusive features
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - heading "Personal Information" [level=2] [ref=e21]
+          - paragraph [ref=e22]: Enter your basic personal details
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - generic [ref=e26]: FIRST NAME *
+            - textbox "Enter your first name" [ref=e27]: John
+          - generic [ref=e28]:
+            - generic [ref=e30]: LAST NAME *
+            - textbox "Enter your last name" [ref=e31]: Doe
+          - generic [ref=e32]:
+            - generic [ref=e34]: AGE
+            - spinbutton [ref=e35]
+          - generic [ref=e36]:
+            - generic [ref=e38]: GENDER *
+            - generic [ref=e39]:
+              - generic [ref=e40] [cursor=pointer]:
+                - radio "Male" [ref=e41]
+                - generic [ref=e42]: Male
+              - generic [ref=e43] [cursor=pointer]:
+                - radio "Female" [ref=e44]
+                - generic [ref=e45]: Female
+              - generic [ref=e46] [cursor=pointer]:
+                - radio "Other" [ref=e47]
+                - generic [ref=e48]: Other
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - img [ref=e51]
+            - generic [ref=e54]: ADDRESS
+          - textbox "Enter your full address" [ref=e55]
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - img [ref=e59]
+            - heading "Contact & Security" [level=2] [ref=e63]
+          - paragraph [ref=e64]: Your contact details and account security
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - img [ref=e68]
+              - generic [ref=e71]: EMAIL ADDRESS *
+            - textbox "your@email.com" [ref=e72]
+          - generic [ref=e73]:
+            - generic [ref=e74]:
+              - img [ref=e75]
+              - generic [ref=e77]: PHONE NUMBER *
+            - textbox "+1234567890" [ref=e78]
+        - generic [ref=e79]:
+          - generic [ref=e81]: LOCATION
+          - generic [ref=e82]:
+            - combobox [ref=e83]:
+              - option "Country" [selected]
+              - option "United States"
+              - option "United Kingdom"
+              - option "India"
+              - option "Canada"
+              - option "Australia"
+            - combobox [disabled] [ref=e84]:
+              - option "State" [selected]
+            - combobox [disabled] [ref=e85]:
+              - option "City" [selected]
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - img [ref=e89]
+              - generic [ref=e93]: PASSWORD *
+            - generic [ref=e94]:
+              - textbox "Create quantum password" [active] [ref=e95]: StrongPass123!
+              - button [ref=e96] [cursor=pointer]:
+                - img [ref=e97]
+            - generic [ref=e100]:
+              - generic [ref=e101]:
+                - generic [ref=e102]: QUANTUM ENCRYPTION LEVEL
+                - generic [ref=e103]: Strong
+              - paragraph [ref=e106]: "QUANTUM LEVEL: STRONG - MAXIMUM ENCRYPTION"
+              - generic [ref=e107]:
+                - generic [ref=e109]: 8+ QUANTUM BITS
+                - generic [ref=e111]: UPPERCASE PROTOCOL
+                - generic [ref=e113]: LOWERCASE PROTOCOL
+                - generic [ref=e115]: DIGITAL SEQUENCE
+                - generic [ref=e117]: SPECIAL ENCRYPTION
+          - generic [ref=e118]:
+            - generic [ref=e119]:
+              - img [ref=e120]
+              - generic [ref=e124]: CONFIRM PASSWORD *
+            - generic [ref=e125]:
+              - textbox "Confirm quantum password" [ref=e126]
+              - button [ref=e127] [cursor=pointer]:
+                - img [ref=e128]
+        - generic [ref=e132] [cursor=pointer]:
+          - checkbox "I agree to the Quantum Terms & Conditions By creating an account, you agree to our quantum protocols" [ref=e133]
+          - generic [ref=e134]:
+            - text: I agree to the Quantum Terms & Conditions
+            - paragraph [ref=e135]: By creating an account, you agree to our quantum protocols
+    - generic [ref=e136]:
+      - button "CREATE QUANTUM ACCOUNT" [ref=e137] [cursor=pointer]:
+        - generic [ref=e138]:
+          - img [ref=e139]
+          - generic [ref=e141]: CREATE QUANTUM ACCOUNT
+      - paragraph [ref=e143]:
+        - text: Already have a quantum profile?
+        - link "ACCESS QUANTUM PORTAL" [ref=e144] [cursor=pointer]:
+          - /url: "#"
+```
