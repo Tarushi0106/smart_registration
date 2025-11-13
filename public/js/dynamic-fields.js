@@ -39,7 +39,6 @@ class DynamicFields {
         const stateSelect = document.getElementById('state');
         const citySelect = document.getElementById('city');
 
-        // Clear existing options
         stateSelect.innerHTML = '<option value="">Select State</option>';
         citySelect.innerHTML = '<option value="">Select City</option>';
 
@@ -62,7 +61,6 @@ class DynamicFields {
         const stateText = state.options[state.selectedIndex].text;
         const citySelect = document.getElementById('city');
 
-        // Clear existing options
         citySelect.innerHTML = '<option value="">Select City</option>';
 
         if (stateText && this.stateCityMap[stateText]) {
@@ -79,7 +77,6 @@ class DynamicFields {
     }
 }
 
-// Initialize dynamic fields when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new DynamicFields();
 });

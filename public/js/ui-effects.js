@@ -5,7 +5,6 @@ class UIEffects {
     }
 
     initializeEventListeners() {
-        // Password visibility toggle
         document.getElementById('togglePassword').addEventListener('click', () => {
             this.togglePasswordVisibility('password', 'togglePassword');
         });
@@ -14,7 +13,6 @@ class UIEffects {
             this.togglePasswordVisibility('confirmPassword', 'toggleConfirmPassword');
         });
 
-        // Input focus effects
         const inputs = document.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('focus', () => {
@@ -26,7 +24,6 @@ class UIEffects {
             });
         });
 
-        // Form submission loading state
         const form = document.getElementById('registrationForm');
         form.addEventListener('submit', () => {
             this.animateButton();
@@ -34,7 +31,6 @@ class UIEffects {
     }
 
     initializeAnimations() {
-        // Add floating animation to form elements on load
         const formGroups = document.querySelectorAll('.form-group');
         formGroups.forEach((group, index) => {
             group.style.animationDelay = `${index * 0.1}s`;
@@ -66,7 +62,6 @@ class UIEffects {
     }
 }
 
-// Add CSS for animations
 const style = document.createElement('style');
 style.textContent = `
     .fade-in-up {
@@ -107,7 +102,6 @@ style.textContent = `
 
 document.head.appendChild(style);
 
-// Initialize UI effects when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new UIEffects();
 });
