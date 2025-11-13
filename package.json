@@ -1,14 +1,36 @@
 {
   "name": "intelligent-registration-system",
   "version": "1.0.0",
-  "description": "Automation testing for registration form using Playwright",
-  "type": "module",
+  "description": "Modern registration system with intelligent validations and automation testing",
+  "main": "server/server.js",
   "scripts": {
-    "test": "playwright test",
-    "test:ui": "playwright test --ui",
-    "test:headed": "playwright test --headed"
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "serve": "npx http-server public -c-1 -p 5173",
+    "cy:run": "start-server-and-test 'npm run serve' http://localhost:5173 'cypress run'",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test": "npm run cypress:run"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "nodemailer": "^6.9.7"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.1"
-  }
+    "cypress": "^12.17.0",
+    "nodemon": "^3.0.1",
+    "start-server-and-test": "^2.1.2"
+  },
+  "keywords": [
+    "registration",
+    "automation",
+    "cypress",
+    "validation",
+    "testing"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
